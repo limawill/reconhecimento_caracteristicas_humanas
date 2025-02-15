@@ -169,3 +169,9 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Ignorar arquivos grandes de modelos
+modelos/**/*.h5
+modelos/**/*.keras
+
+
