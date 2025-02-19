@@ -160,7 +160,6 @@ def select_model_cnn() -> str:
     os.system('clear')  # Limpa a tela
 
     model_options = {
-        "                                      ",
         "1": "InceptionV3",
         "2": "MobileNetV2",
         "3": "ResNet50",
@@ -171,6 +170,7 @@ def select_model_cnn() -> str:
 
     menu_text = [
         "=========== MODELO CNN ===========",
+        "                                  ",
         "Escolha uma opção:",
     ] + [f"{key}. {value}" for key, value in model_options.items()] + [
         "==================================="
