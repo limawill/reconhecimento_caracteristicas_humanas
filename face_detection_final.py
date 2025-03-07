@@ -6,10 +6,10 @@ import numpy as np
 from tensorflow.keras.models import load_model
 
 
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # 0 = INFO, 1 = WARNING, 2 = ERROR, 3 = FATAL
+#os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # 0 = INFO, 1 = WARNING, 2 = ERROR, 3 = FATAL
 
 # Redireciona stderr para /dev/null
-sys.stderr = open(os.devnull, 'w')
+#sys.stderr = open(os.devnull, 'w')
 
 
 # Mapeamento das emoções
@@ -55,49 +55,50 @@ def detect_faces(image: cv2.Mat, gender_model, age_model, emotion_model) -> cv2.
     Detecta rostos em uma imagem e classifica gênero, idade e humor.
     """
     face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)  # Converte a imagem inteira para escala de cinza (para detecção de faces)
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     faces = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
 
     for (x, y, w, h) in faces:
-        face_roi = image[y:y+h, x:x+w]  # Região do rosto em cores (para gênero e idade)
+        face_roi = image[y:y+h, x:x+w]
 
-        # Processamento para os modelos de gênero e idade (224x224)
+        # Processamento para os modelos de gênero e idade (224x224 RGB)
         face_resized_224 = cv2.resize(face_roi, (224, 224)) / 255.0
         face_input_224 = np.expand_dims(face_resized_224, axis=0)
 
-        # Processamento para o modelo de humor (48x48) - Correção aqui!
-        face_resized_48 = cv2.resize(face_roi, (48, 48))  # Redimensiona a face_roi (que está em cores)
-        face_gray_48 = cv2.cvtColor(face_resized_48, cv2.COLOR_BGR2GRAY)  # Converte para escala de cinza
-        face_input_48_gray = np.expand_dims(face_gray_48, axis=0) / 255.0 # Normaliza
-        face_input_48_gray = np.expand_dims(face_input_48_gray, axis=-1)  # Adiciona a dimensão do canal (1)
+        # Processamento adaptativo para o modelo de humor
+        if emotion_model.input_shape[-1] == 1:  # Modelo de escala de cinza
+            # Converte para cinza ANTES de redimensionar e normalizar
+            face_gray = cv2.cvtColor(face_roi, cv2.COLOR_BGR2GRAY)
+            target_size = emotion_model.input_shape[1:3]
+            face_resized_emotion = cv2.resize(face_gray, target_size) / 255.0
+            face_input_emotion = np.expand_dims(face_resized_emotion, axis=0)
+            face_input_emotion = np.expand_dims(face_input_emotion, axis=-1)  # Adiciona dimensão do canal
+        else:  # Modelo RGB
+            # Usa o tamanho definido pelo modelo
+            target_size = emotion_model.input_shape[1:3]
+            face_resized_emotion = cv2.resize(face_roi, target_size) / 255.0
+            face_input_emotion = np.expand_dims(face_resized_emotion, axis=0)
 
         # Predições
         gender_pred = gender_model.predict(face_input_224)
         gender = "Feminino" if gender_pred[0][0] > 0.5 else "Masculino"
-        label_gender = f"Genero: {gender}" 
+        label_gender = f"Genero: {gender}"
 
         age_pred = age_model.predict(face_input_224)
         age_range = map_age_to_range(age_pred[0][0])
-        label_age = f"Idade: {age_range}" 
+        label_age = f"Idade: {age_range}"
 
-        emotion_pred = emotion_model.predict(face_input_48_gray)  # Usa a imagem em escala de cinza com a dimensão do canal
+        emotion_pred = emotion_model.predict(face_input_emotion)
         emotion_index = np.argmax(emotion_pred)
         emotion_label = emotion_mapping[emotion_index]
         label_emotion = f"Humor: {emotion_label}"
-        
+
         y_offset = -20  # Ajuste a posição vertical do texto
         cv2.rectangle(image, (x, y), (x+w, y+h), (0, 255, 0), 2)
 
-        cv2.putText(image, label_gender, (x, y + y_offset - 40), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)  # Exibe gênero
-        cv2.putText(image, label_age, (x, y + y_offset - 15), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)  # Exibe idade (deslocado 20 pixels para baixo)
-        cv2.putText(image, label_emotion, (x, y + y_offset + 10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)  # Exibe emoção (deslocado 40 pixels para baixo)
-
-    
-        
-        # Exibir informações na imagem
-        #label = f"{gender}, \n {age_range},\n {emotion_label}"
-        #cv2.rectangle(image, (x, y), (x+w, y+h), (0, 255, 0), 2)
-        #cv2.putText(image, label, (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 255, 0), 2)
+        cv2.putText(image, label_gender, (x, y + y_offset - 40), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
+        cv2.putText(image, label_age, (x, y + y_offset - 15), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
+        cv2.putText(image, label_emotion, (x, y + y_offset + 10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
 
     return image
 
