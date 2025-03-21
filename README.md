@@ -192,8 +192,8 @@ _Nota_: Os datasets (UTKFace, CK+, CelebA) não estão incluídos devido ao tama
 
 ## Contribuições
 
-- **💬 [Participe das Discussões](https://github.com/limawill/reconhecimento_caracteristicas_humanas.git/discussions)**: Compartilhe suas ideias, dê feedback ou faça perguntas.
-- **🐛 [Reporte Problemas](https://github.com/limawill/reconhecimento_caracteristicas_humanas.git/issues)**: Envie bugs encontrados ou registre pedidos de novas funcionalidades para o projeto `reconhecimento_caracteristicas_humanas.git`.
+- **💬 [Participe das Discussões](https://github.com/limawill/reconhecimento_caracteristicas_humanas/discussions)**: Compartilhe suas ideias, dê feedback ou faça perguntas.
+- **🐛 [Reporte Problemas](https://github.com/limawill/reconhecimento_caracteristicas_humanas/issues)**: Envie bugs encontrados ou registre pedidos de novas funcionalidades para o projeto `reconhecimento_caracteristicas_humanas.git`.
 - **💡 [Envie Pull Requests](https://github.com/limawill/reconhecimento_caracteristicas_humanas.git/blob/main/CONTRIBUTING.md)**: Revise PRs abertos e envie seus próprios PRs.
 
 <details closed>
