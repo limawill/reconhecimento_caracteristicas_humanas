@@ -1,54 +1,41 @@
 <p align="center">
-    <img src="https://raw.githubusercontent.com/PKief/vscode-material-icon-theme/ec559a9f6bfd399b82bb44393651661b08aaf7ba/icons/folder-markdown-open.svg" align="center" width="30%">
+    <img src="Rostos_Detectado.png" align="center" width="80%">
 </p>
-<p align="center"><h1 align="center">RECONHECIMENTO_CARACTERISTICAS_HUMANAS.GIT</h1></p>
-<p align="center">
-	<em><code>❯ REPLACE-ME</code></em>
-</p>
-<p align="center">
-	<img src="https://img.shields.io/github/license/limawill/reconhecimento_caracteristicas_humanas.git?style=default&logo=opensourceinitiative&logoColor=white&color=0080ff" alt="license">
-	<img src="https://img.shields.io/github/last-commit/limawill/reconhecimento_caracteristicas_humanas.git?style=default&logo=git&logoColor=white&color=0080ff" alt="last-commit">
-	<img src="https://img.shields.io/github/languages/top/limawill/reconhecimento_caracteristicas_humanas.git?style=default&color=0080ff" alt="repo-top-language">
-	<img src="https://img.shields.io/github/languages/count/limawill/reconhecimento_caracteristicas_humanas.git?style=default&color=0080ff" alt="repo-language-count">
-</p>
-<p align="center"><!-- default option, no dependency badges. -->
-</p>
-<p align="center">
-	<!-- default option, no dependency badges. -->
-</p>
+<p align="center"><h1 align="center">Reconhecimento Facial de Sexo, Emoção e Idade com CNNs</h1></p>
 <br>
 
-##  Table of Contents
+Bem-vindo ao repositório do meu Trabalho de Conclusão de Curso (TCC)! Este projeto desenvolve algoritmos em Python para reconhecimento facial, focando na estimativa de idade, classificação de sexo e identificação de emoções por meio de Redes Neurais Convolucionais (CNNs). A abordagem utiliza três modelos distintos, cada um otimizado para uma tarefa específica, visando alta precisão e eficiência em aplicações como sistemas de segurança e marketing.
 
-- [ Overview](#-overview)
-- [ Features](#-features)
-- [ Project Structure](#-project-structure)
-  - [ Project Index](#-project-index)
-- [ Getting Started](#-getting-started)
-  - [ Prerequisites](#-prerequisites)
-  - [ Installation](#-installation)
-  - [ Usage](#-usage)
-  - [ Testing](#-testing)
-- [ Project Roadmap](#-project-roadmap)
-- [ Contributing](#-contributing)
-- [ License](#-license)
-- [ Acknowledgments](#-acknowledgments)
+## Descrição
 
----
+Desenvolvido como parte do meu TCC em Data Science e Analytics no MBA USP ESSALQ, este projeto explora o uso de CNNs especializadas para análise facial. Os modelos foram treinados em datasets específicos:
 
-##  Overview
+- **UTKFace**: Estimativa de idade e classificação de sexo.
+- **CK+ (Cohn-Kanade Plus)**: Reconhecimento de emoções.
+- **CelebA**: Validação visual.
 
-<code>❯ REPLACE-ME</code>
+### Resultados
 
----
+- Alta precisão na classificação de sexo e emoções, com _InceptionV3_ como destaque.
+- Baixo Erro Médio Absoluto (MAE) na estimativa de idade.
+- Viabilidade comprovada para aplicações práticas e construção de modelos personalizados.
 
-##  Features
+Este repositório contém o código-fonte, o notebook Jupyter com a análise e os modelos, além de instruções para reproduzir os experimentos.
 
-<code>❯ REPLACE-ME</code>
+# Pré-requisitos
 
----
+- Python 3.11 ou superior
+- Jupyter Notebook
+- Bibliotecas:
+  - `tensorflow`
+  - `keras`
+  - `pandas`
+  - `numpy`
+  - `opencv-python` (para manipulação de imagens)
+  - `matplotlib` (para visualizações)
+  - `seabor` (para visualizações)
 
-##  Project Structure
+## Project Structure
 
 ```sh
 └── reconhecimento_caracteristicas_humanas.git/
@@ -69,8 +56,83 @@
     └── requirements.txt
 ```
 
+## Instalação
 
-###  Project Index
+### 1. Clone o repositorio:
+
+```sh
+git clone https://github.com/limawill/reconhecimento_caracteristicas_humanas.git
+```
+
+### 2. Acesse a pasta:
+
+```sh
+cd reconhecimento-facial-tcc
+```
+
+### 3. Crie um ambiente virtual:
+
+```sh
+python -m venv .venv
+source .venv/bin/activate  # Linux/Mac
+venv\Scripts\activate     # Windows
+```
+
+### 4. Instale as dependências:
+
+```sh
+pip install -r requirements.txt
+```
+
+### 5. Baixe os arquivos .h5:
+
+Acesse:
+Faça download do arquivo zip, descompacte e copia as 3 pastas:
+
+- `humor`
+- `idade`
+- `sexo`
+
+Volte a pasta
+
+```sh
+cd reconhecimento-facial-tcc
+```
+
+e cole o conteudo dentro da pasta modelos
+
+## Table of Contents
+
+- [ Overview](#-overview)
+- [ Features](#-features)
+- [ Project Structure](#-project-structure)
+  - [ Project Index](#-project-index)
+- [ Getting Started](#-getting-started)
+  - [ Prerequisites](#-prerequisites)
+  - [ Installation](#-installation)
+  - [ Usage](#-usage)
+  - [ Testing](#-testing)
+- [ Project Roadmap](#-project-roadmap)
+- [ Contributing](#-contributing)
+- [ License](#-license)
+- [ Acknowledgments](#-acknowledgments)
+
+---
+
+## Overview
+
+<code>❯ REPLACE-ME</code>
+
+---
+
+## Features
+
+<code>❯ REPLACE-ME</code>
+
+---
+
+### Project Index
+
 <details open>
 	<summary><b><code>RECONHECIMENTO_CARACTERISTICAS_HUMANAS.GIT/</code></b></summary>
 	<details> <!-- __root__ Submodule -->
@@ -122,34 +184,35 @@
 </details>
 
 ---
-##  Getting Started
 
-###  Prerequisites
+## Getting Started
+
+### Prerequisites
 
 Before getting started with reconhecimento_caracteristicas_humanas.git, ensure your runtime environment meets the following requirements:
 
 - **Programming Language:** Python
 - **Package Manager:** Pip
 
-
-###  Installation
+### Installation
 
 Install reconhecimento_caracteristicas_humanas.git using one of the following methods:
 
 **Build from source:**
 
 1. Clone the reconhecimento_caracteristicas_humanas.git repository:
+
 ```sh
 ❯ git clone https://github.com/limawill/reconhecimento_caracteristicas_humanas.git
 ```
 
 2. Navigate to the project directory:
+
 ```sh
 ❯ cd reconhecimento_caracteristicas_humanas.git
 ```
 
 3. Install the project dependencies:
-
 
 **Using `pip`** &nbsp; [<img align="center" src="https://img.shields.io/badge/Pip-3776AB.svg?style={badge_style}&logo=pypi&logoColor=white" />](https://pypi.org/project/pip/)
 
@@ -157,10 +220,8 @@ Install reconhecimento_caracteristicas_humanas.git using one of the following me
 ❯ pip install -r requirements.txt
 ```
 
+### Usage
 
-
-
-###  Usage
 Run reconhecimento_caracteristicas_humanas.git using the following command:
 **Using `pip`** &nbsp; [<img align="center" src="https://img.shields.io/badge/Pip-3776AB.svg?style={badge_style}&logo=pypi&logoColor=white" />](https://pypi.org/project/pip/)
 
@@ -168,8 +229,8 @@ Run reconhecimento_caracteristicas_humanas.git using the following command:
 ❯ python {entrypoint}
 ```
 
+### Testing
 
-###  Testing
 Run the test suite using the following command:
 **Using `pip`** &nbsp; [<img align="center" src="https://img.shields.io/badge/Pip-3776AB.svg?style={badge_style}&logo=pypi&logoColor=white" />](https://pypi.org/project/pip/)
 
@@ -177,17 +238,17 @@ Run the test suite using the following command:
 ❯ pytest
 ```
 
-
 ---
-##  Project Roadmap
 
-- [X] **`Task 1`**: <strike>Implement feature one.</strike>
+## Project Roadmap
+
+- [x] **`Task 1`**: <strike>Implement feature one.</strike>
 - [ ] **`Task 2`**: Implement feature two.
 - [ ] **`Task 3`**: Implement feature three.
 
 ---
 
-##  Contributing
+## Contributing
 
 - **💬 [Join the Discussions](https://github.com/limawill/reconhecimento_caracteristicas_humanas.git/discussions)**: Share your insights, provide feedback, or ask questions.
 - **🐛 [Report Issues](https://github.com/limawill/reconhecimento_caracteristicas_humanas.git/issues)**: Submit bugs found or log feature requests for the `reconhecimento_caracteristicas_humanas.git` project.
@@ -230,13 +291,13 @@ Run the test suite using the following command:
 
 ---
 
-##  License
+## License
 
 This project is protected under the [SELECT-A-LICENSE](https://choosealicense.com/licenses) License. For more details, refer to the [LICENSE](https://choosealicense.com/licenses/) file.
 
 ---
 
-##  Acknowledgments
+## Acknowledgments
 
 - List any resources, contributors, inspiration, etc. here.
 
