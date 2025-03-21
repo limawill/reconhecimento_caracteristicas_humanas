@@ -18,18 +18,22 @@ Desenvolvido como parte do meu TCC em Data Science e Analytics no MBA USP Esalq,
 
 ## Resultados Detalhados
 
-- Alta precisão na classificação de sexo e emoções, com _InceptionV3_ como destaque.
-- Baixo Erro Médio Absoluto (MAE) na estimativa de idade.
-- Viabilidade comprovada para aplicações práticas.
+Abaixo estão as métricas de desempenho dos modelos avaliados:
 
-| Tarefa                    | Métrica             | Valor    |
-| ------------------------- | ------------------- | -------- |
-| Classificação de Sexo     | Acurácia            | 95%      |
-| Estimativa de Idade       | Erro Médio Absoluto | 4.2 anos |
-| Reconhecimento de Emoções | F1-Score            | 0.89     |
+<div align="center">
+
+| Modelo         | Gênero (Acurácia) 🚻 | Idade (MAE) 📅 | Emoção (Acurácia) 😃 |
+| -------------- | -------------------- | -------------- | -------------------- |
+| InceptionV3    | 94,05%               | 4,06           | 85,19%               |
+| MobileNetV2    | 93,00%               | 5,15           | 84,00%               |
+| ResNet50       | 86,00%               | 9,12           | 72,75%               |
+| EfficientNetB0 | 51,12%               | 15,12          | 54,82%               |
+| cnn_tcc_will   | 87,64%               | 7,84           | 76,59%               |
+
+</div>
 
 <p align="center">
-    <img src="curva_aprendizado.png" alt="Curva de Aprendizado" width="60%">
+    <img src="imagens/resultados1.png" alt="Curva de Aprendizado" width="60%">
 </p>
 
 ## Tecnologias Utilizadas
@@ -182,13 +186,22 @@ _Nota_: Os datasets (UTKFace, CK+, CelebA) não estão incluídos devido ao tama
 
 ## Limitações
 
-- Os modelos podem ter desempenho reduzido em imagens de baixa resolução.
-- O reconhecimento de emoções é limitado às categorias do CK+.
+Este projeto obteve resultados promissores, mas enfrentou algumas restrições:
+
+- **Impacto de adereços**: A presença de óculos afetou a classificação de emoções, indicando sensibilidade a elementos visuais.
+- **Vieses nos dados**: A classificação de gênero apresentou imprecisões em pessoas com óculos ou de etnia asiática, refletindo a necessidade de datasets mais balanceados.
+- **Restrições de hardware**: O treinamento e a inferência foram limitados pelo hardware disponível e pela plataforma Kaggle, impactando a capacidade de processar arquiteturas mais profundas.
+- **Resolução e qualidade**: Imagens ou vídeos de baixa qualidade podem reduzir a precisão dos modelos.
 
 ## Próximos Passos
 
-- Otimizar os modelos pra execução em tempo real.
-- Adicionar suporte a mais emoções e faixas etárias.
+Para evoluir este projeto, as seguintes melhorias são sugeridas:
+
+- **Hardware mais robusto**: Usar GPUs de alto desempenho para treinar modelos mais profundos e processar vídeos em tempo real com maior eficiência.
+- **Ajustes de hiperparâmetros**: Implementar taxa de aprendizado dinâmica, aumentar o tamanho do lote e adicionar regularização (ex.: dropout entre 0,3 e 0,5) para melhorar acurácia e generalização.
+- **Expansão dos dados**: Incluir datasets diversificados (ex.: FairFace) e técnicas de aumento de dados para mitigar vieses e melhorar a robustez.
+- **Combinação de modelos**: Integrar o `cnn_tcc_will` com modelos pré-treinados (ex.: InceptionV3) via extração de características ou ensemble para aumentar o desempenho.
+- **Otimização para tempo real**: Aplicar técnicas como quantização e _pruning_ para reduzir latência e viabilizar aplicações práticas em vídeos ao vivo.
 
 ## Contribuições
 
