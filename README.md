@@ -34,6 +34,7 @@ Abaixo estão as métricas de desempenho dos modelos avaliados:
 
 <p align="center">
     <img src="imagens/resultados1.png" alt="Curva de Aprendizado" width="80%">
+	<img src="imagens/resultado_geral.png" alt="Curva de Aprendizado" width="100%">
 </p>
 
 ## Tecnologias Utilizadas
