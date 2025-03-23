@@ -34,7 +34,7 @@ Abaixo estão as métricas de desempenho dos modelos avaliados:
 
 <p align="center">
     <img src="imagens/resultados1.png" alt="Curva de Aprendizado" width="80%">
-	<img src="imagens/resultado_geral.png" alt="Curva de Aprendizado" width="100%">
+	  <img src="imagens/resultado_geral.png" alt="Curva de Aprendizado" width="100%">
 </p>
 
 ## Tecnologias Utilizadas
@@ -88,7 +88,7 @@ Abaixo estão as métricas de desempenho dos modelos avaliados:
 
 ### 5. Baixe os arquivos .h5:
 
-Acesse: [Handlebars templates](http://handlebarsjs.com/) e faça download do arquivo zip. Descompacte e copie as pastas `humor`, `idade` e`sexo` para pasta `modelos`.
+Acesse: [downloads dos arquivos .h5](https://drive.google.com/drive/folders/1dLWsVAkapgM0WalzgIPb0sXKy4jBX-D7?usp=sharing) e faça download do arquivo zip. Descompacte e copie as pastas `humor`, `idade` e`sexo` para pasta `modelos`.
 
 ## Uso
 
